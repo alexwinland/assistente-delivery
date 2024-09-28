@@ -27,6 +27,8 @@ Esse projeto é um **assistente de entregas super inteligente** criado usando a 
 * **AWS Step Functions:** É como um mapa que guia o assistente em cada etapa do processo, do pedido até a entrega.
 * **Amazon Bedrock:** A inteligência por trás do assistente. Ele usa um modelo de linguagem gigante para entender suas perguntas e gerar respostas inteligentes.
 
+<img src="/imagem/sample-bedrock-prompt-chaining.png">
+
 ## **Por que usar esse projeto?**
 
 * **Automatização:** Diga adeus ao trabalho manual! O assistente faz tudo sozinho.
