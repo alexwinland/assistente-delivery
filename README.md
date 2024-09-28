@@ -42,12 +42,6 @@ Esse projeto é um **assistente de entregas super inteligente** criado usando a 
 2. **Personalize os prompts:** Adapte os prompts dentro do código para atender às suas necessidades específicas.
 3. **Integre com outros serviços:** Conecte o assistente a outros serviços, como um banco de dados para armazenar informações sobre pedidos ou um sistema de pagamento para processar pagamentos.
 
-**Dica:** Para melhorar ainda mais o seu assistente, você pode adicionar funcionalidades como:
-
-* **Suporte a múltiplos idiomas:** Para atender a clientes de diferentes regiões.
-* **Recomendações de produtos:** Sugerir itens adicionais com base no histórico de pedidos.
-* **Integração com aplicativos de mapa:** Mostrar a localização do entregador em tempo real.
-
 **Vamos juntos transformar a forma como fazemos entregas!** 
 
 **#AWS #StepFunctions #Bedrock #AssistenteDeEntrega #DevOps #Cloud**
