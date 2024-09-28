@@ -1,4 +1,4 @@
-# **Seu Assistente de Entregas Personalizado!**
+# **Assistente de Entregas Personalizado!**
 
 ## **O que é isso?**
 
