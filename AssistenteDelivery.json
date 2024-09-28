@@ -1,0 +1,71 @@
+{
+  "Comment": "Assistente de Entrega",
+  "StartAt": "ReceberPedido",
+  "States": {
+    "ReceberPedido": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "cohere.command-text-v14",
+        "Body": {
+          "prompt": "Qual é o endereço de entrega?"
+        },
+        "max_tokens": 250
+      },
+      "Next": "ObterDetalhesPedido",
+      "ResultPath": "$.endereco_cliente"
+    },
+    "ObterDetalhesPedido": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "cohere.command-text-v14",
+        "Body": {
+          "prompt": "Quais são os itens do pedido?"
+        },
+        "max_tokens": 250
+      },
+      "Next": "CalcularTempoEntrega",
+      "ResultPath": "$.itens_pedido"
+    },
+    "CalcularTempoEntrega": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "cohere.command-text-v14",
+        "Body": {
+          "prompt": "Qual o tempo estimado de entrega para o endereço ${$.endereco_cliente} considerando os itens ${$.itens_pedido}?"
+        },
+        "max_tokens": 250
+      },
+      "Next": "NotificarCliente",
+      "ResultPath": "$.tempo_entrega"
+    },
+    "NotificarCliente": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "cohere.command-text-v14",
+        "Body": {
+          "prompt": "Enviar uma notificação para o cliente informando que o pedido está a caminho e o tempo estimado de entrega é ${$.tempo_entrega}."
+        },
+        "max_tokens": 250
+      },
+      "Next": "RastreioEntrega",
+      "ResultPath": "$.notificacao_enviada"
+    },
+    "RastreioEntrega": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::bedrock:invokeModel",
+      "Parameters": {
+        "ModelId": "cohere.command-text-v14",
+        "Body": {
+          "prompt": "Atualizar o status de entrega do pedido."
+        },
+        "max_tokens": 250
+      },
+      "End": true,
+      "ResultPath": "$.status_entrega"
+    }
+  }
+}
